@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -78,6 +78,11 @@
 				
 				if (positionX > boardWidth) {
 					speed *= -1;
+					//if (positionY + 70 < 1056 ) {
+					//	positionY += heightChange;
+					//} else {
+					//	hei
+					//}
 					positionY += heightChange;
 					box.css("top", positionY);
 				}
@@ -85,15 +90,17 @@
 				if (positionX < 0) {
 					speed*= -1;
 					positionY += heightChange;
+					//console.log(heightChange);
 					box.css("top", positionY);
 				}
 				
 				if (positionY > boardHeight) {
-					heightChange *= -1
+					heightChange *= -1;
+					console.log(positionY);
 				}
 
 				if (positionY < 0) {
-					hieghtChange = 70;
+					heightChange *= -1;
 				}
 			};
 
@@ -105,6 +112,7 @@
 			function handleBoxClick() {
 				positionX = 0;
 				positionY = 0;
+				heightChange = 70;
 				if (speed > 0) {
 					speed += 3;
 				} else {
