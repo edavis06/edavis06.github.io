@@ -18,9 +18,9 @@ function runProgram(){
     "DOWN": 40
   }
   // Game Item Objects
-  var positionX = 0; // the x-coordinate location for the box
+  var positionX = 195; // the x-coordinate location for the box
   var speedX = 0; // the speed for the box along the x-axis
-  var positionY = 0; // the y-coordinate location for the box
+  var positionY = 195; // the y-coordinate location for the box
   var speedY = 0; // the speed for the box along the y-axis
 
   // one-time setup
