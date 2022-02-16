@@ -10,14 +10,23 @@ function runProgram(){
   // Constant Variables
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
-  console.log("hi");
+  var KEY = {
+    "ENTER": 13,
+    "LEFT": 37,
+    "UP": 38,
+    "RIGHT": 39,
+    "DOWN": 40
+  }
   // Game Item Objects
-
+  var positionX = 0; // the x-coordinate location for the box
+  var speedX = 0; // the speed for the box along the x-axis
+  var positionY = 0; // the y-coordinate location for the box
+  var speedY = 0; // the speed for the box along the y-axis
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
-
+  $(document).on('keyup', handleKeyUp);
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +36,8 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    
+    repositionGameItem();
+    redrawGameItem();
 
   }
   
@@ -35,14 +45,40 @@ function runProgram(){
   Called in response to events.
   */
   function handleKeyDown(event) {
-    console.log("down");
+    if (event.which === KEY.ENTER){
+      console.log("enter pressed");
+    } else if (event.which === KEY.UP) {
+      speedY = -5;
+      console.log("up pressed");
+    } else if (event.which === KEY.DOWN) {
+      speedY = 5;
+      console.log("down pressed");
+    } else if (event.which === KEY.LEFT) {
+      speedX = -5;
+      console.log("left pressed");
+    } else if (event.which === KEY.RIGHT) {
+      speedX = 5;
+      console.log("right pressed");
+    }
+  }
+  function handleKeyUp(event) {
+    speedX = 0;
+    speedY = 0;
   }
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
+  function repositionGameItem() {
+    positionX += speedX;
+    positionY += speedY;
+  }
 
-  
+  function redrawGameItem(){
+    $("#walker").css("left", positionX); // draw the box in the new location, positionX pixels away from the "left"
+    $("#walker").css("top", positionY); // draw the box in the new location, positionX pixels away from the "top"
+  }
+
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
