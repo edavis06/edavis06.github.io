@@ -38,8 +38,7 @@ function applyFilterNoBackground(filterFunction){
             var rgbString = image[a][b];
             var rgbNumbers = rgbStringToArray(rgbString);
             console.log(rgbNumbers);
-            if (rgbNumbers[BLUE] === 150 && rgbNumbers[RED] === 150){
-            } else {
+            if (image[a][b] != image[0][0]){
                 filterFunction(rgbNumbers);
                 rgbString = rgbArrayToString(rgbNumbers);
                 image[a][b] = rgbString;
