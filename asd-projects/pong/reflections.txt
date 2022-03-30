@@ -1,0 +1,34 @@
+Gameplay
+    Describe Gameplay  
+        *Two  players can move a rectangular box up and down the sides of an arena. A small ball is hit back and forth between the two players.
+         If the ball goes behind a player's box, then the other player recieves a point. The ball can bounce off the top and bottom walls of the arena, and it speeds up after every hit.
+    Conditions When the Game Begins
+        *The scoreboard at the top of the screen should read 0 : 0. The player boxes should be at the starting position (vertically aligned and at the horizontal edge of the game board).
+    Game End
+        *The game ends when one of the players reaches the set end score.
+    What ifs will there be
+        *if ball hits player block then reverse horizontal speed
+        *if ball hits ceiling or floor then reverse vertical speed
+        *if ball hits the side walls then reset board and increase score
+        *if points = endScore then end game
+Visual Game Components
+    What are the visual game Components/data managements
+        *Player Scores
+            Animated because the scores change. Should be placed above the game board
+            Need to manage score & end score
+        *Player 0 box
+            Animated because it moves up and down. Should be placed on the left edge of the gameboard
+            Need to manage position x & position y
+        *Player 1 box
+            Animated because it moves up and down. Should be placed on the right edge of the gameboard
+            Need to manage position x & position y
+        *Game ball
+            Animated because it moves across the gameboard.
+            Need to manage position x, position y, speed x, speed y
+        *Game board
+            Static
+            Need to manage Height and width
+        *Start Button
+            Static
+        *reset Button
+            Static
