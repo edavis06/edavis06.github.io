@@ -30,5 +30,22 @@ Visual Game Components
             Need to manage Height and width
         *Start Button
             Static
+            nothing to manage
         *reset Button
             Static
+            nothing to manage
+Events/Logic
+    What events will occur in this game?/what does it do/what will happen
+        *Start button pressed
+            This will unhide the game board and the score
+            Needs to do the same stuff as the reset button
+        *Reset button pressed
+            This will reset the game board and the score
+            Need to move ball and paddles to original locations
+            Need to reset ball speed
+            Need to reset the scoreboard to 0:0
+        *keyboard pressed
+            This moves the players box
+            Need to decipher which key was pressed and then move it a certain direction
+
+
