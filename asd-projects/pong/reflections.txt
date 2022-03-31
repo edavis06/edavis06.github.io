@@ -29,9 +29,11 @@ Visual Game Components
             Static
             Need to manage Height and width
         *Start Button
-            Static
+            Place in the top left next to the scoreboard
+            Active bc it gets hidden
             nothing to manage
         *reset Button
+            placed in the top right next to the scoreboard
             Static
             nothing to manage
 Events/Logic
