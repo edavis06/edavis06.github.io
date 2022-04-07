@@ -50,4 +50,14 @@ Events/Logic
             This moves the players box
             Need to decipher which key was pressed and then move it a certain direction
 
+Coding Ideas
+    *Pause Button
+        Var P
+            when P is pressed pause the game (idk how to pause stuff)
+            var p = false
+            when p is pressed if p = false set p to true else set p to false
+        Pause function
+            while p = true pause game
+
+
 

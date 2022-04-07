@@ -12,7 +12,18 @@ function runProgram(){
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   
   // Game Item Objects
-
+  function factory(id){
+    var gameObject = {};
+      gameObject.id = id;
+      gameObject.x = parseFloat($(id).css('left'));
+      gameObject.y = parseFloat($(id).css('top'));
+      gameObject.width = $(id).width();
+      gameObject.height = $(id).height();
+      gameObject.speedX = 0;
+      gameObject.speedY = 0;
+    console.log(gameObject);
+    return gameObject;
+  }
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)

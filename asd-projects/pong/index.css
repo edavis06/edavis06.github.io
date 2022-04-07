@@ -4,18 +4,52 @@ body {
 }
 
 #board {
-  width: 440px;
-  height: 440px;
+  width: 680px;
+  height: 480px;
   border: 1px solid white;
   background-color: black;
   position: relative;
 }
 
-#gameItem {
+#player1Paddle {
   background-color: teal;
+  width: 20px;
+  height: 80px;
+  position: absolute;
+  left: 30px;
+  top: 100px;
+}
+#player2Paddle {
+  background-color: teal;
+  width: 20px;
+  height: 80px;
+  position: absolute;
+  left: 630px;
+  top: 100px;
+}
+#gameBall {
+  background-color: teal;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 330px;
+  top: 230px;
+}
+#player1Score {
+  background-color: pink;
   width: 50px;
   height: 50px;
   position: absolute;
-/*   left: 100px; */  /* Uncomment if you want to set a "starting" position */
-/*   top: 100px;  */  /* Uncomment if you want to set a "starting" position */
+  top: 30px;
+  left: 240px;
+  text-align: center;
+}
+#player2Score {
+  background-color: pink;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 30px;
+  left: 390px;
+  text-align: center;
 }
