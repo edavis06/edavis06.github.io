@@ -27,8 +27,8 @@ let score2;
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-  $(document).on('keyup', handleEvent("up"));                         // change 'eventType' to the type of event you want to handle
-  $(document).on('keydown', handleEvent("down"));  
+  $(document).on('keyup', handleRelease);                         // change 'eventType' to the type of event you want to handle
+  $(document).on('keydown', handlePress);  
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -46,31 +46,28 @@ let score2;
   /* 
   Called in response to events.
   */
-  function handleEvent(event) {
-    console.log("hi");
-    let keyCode = event.which;
-    if (event === "up") {
+  function handlePress(event) {
       if (event.which === KEY.W) {
         console.log("W Pressed");
-      }else if (keyCode === KEY.UP) {
+      }else if (event.which === KEY.UP) {
         console.log("Up Pressed");
-      }else if (keyCode === KEY.S) {
+      }else if (event.which === KEY.S) {
         console.log("S Pressed");
-      }else if (keyCode === KEY.DOWN) {
-        console.log("Down Pressed");
-      }
-    } else {
-      if (event.which === KEY.W) {
-        console.log("W Released");
-      }else if (keyCode === KEY.UP) {
-        console.log("Up Released");
-      }else if (keyCode === KEY.S) {
-        console.log("S Released");
-      }else if (keyCode === KEY.DOWN) {
+      }else if (event.which === KEY.DOWN) {
         console.log("Down Pressed");
       }
     }
-
+  function handleRelease(event) {
+    if (event.which === KEY.W) {
+      console.log("W Released");
+    }else if (event.which === KEY.UP) {
+      console.log("Up Released");
+    }else if (event.which === KEY.S) {
+      console.log("S Released");
+    }else if (event.which === KEY.DOWN) {
+      console.log("Down Pressed");
+    }
+  }
   }
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -100,4 +97,3 @@ let score2;
     return gameObject;
   }
   
-}
