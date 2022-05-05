@@ -10,24 +10,25 @@ function runProgram(){
   // Constant Variables
   const FRAME_RATE = 60;
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
+  const KEY = {
+    "UP": 38,
+    "DOWN": 40,
+    "W": 87,
+    "S": 83
+  }
   
   // Game Item Objects
-  function factory(id){
-    var gameObject = {};
-      gameObject.id = id;
-      gameObject.x = parseFloat($(id).css('left'));
-      gameObject.y = parseFloat($(id).css('top'));
-      gameObject.width = $(id).width();
-      gameObject.height = $(id).height();
-      gameObject.speedX = 0;
-      gameObject.speedY = 0;
-    console.log(gameObject);
-    return gameObject;
-  }
+let paddle1 = factory("#player1Paddle");
+let paddle2 = factory("#player2Paddle");
+let ball = factory("#gameBall");
+let score1;
+let score2;
+
 
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-  $(document).on('eventType', handleEvent);                           // change 'eventType' to the type of event you want to handle
+  $(document).on('keyup', handleEvent("up"));                         // change 'eventType' to the type of event you want to handle
+  $(document).on('keydown', handleEvent("down"));  
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -46,6 +47,29 @@ function runProgram(){
   Called in response to events.
   */
   function handleEvent(event) {
+    console.log("hi");
+    let keyCode = event.which;
+    if (event === "up") {
+      if (event.which === KEY.W) {
+        console.log("W Pressed");
+      }else if (keyCode === KEY.UP) {
+        console.log("Up Pressed");
+      }else if (keyCode === KEY.S) {
+        console.log("S Pressed");
+      }else if (keyCode === KEY.DOWN) {
+        console.log("Down Pressed");
+      }
+    } else {
+      if (event.which === KEY.W) {
+        console.log("W Released");
+      }else if (keyCode === KEY.UP) {
+        console.log("Up Released");
+      }else if (keyCode === KEY.S) {
+        console.log("S Released");
+      }else if (keyCode === KEY.DOWN) {
+        console.log("Down Pressed");
+      }
+    }
 
   }
 
@@ -60,6 +84,20 @@ function runProgram(){
 
     // turn off event handlers
     $(document).off();
+  }
+    
+    // create paddles and ball
+  function factory(id){
+    var gameObject = {};
+      gameObject.id = id;
+      gameObject.x = parseFloat($(id).css('left'));
+      gameObject.y = parseFloat($(id).css('top'));
+      gameObject.width = $(id).width();
+      gameObject.height = $(id).height();
+      gameObject.speedX = 0;
+      gameObject.speedY = 0;
+    console.log(gameObject);
+    return gameObject;
   }
   
 }
