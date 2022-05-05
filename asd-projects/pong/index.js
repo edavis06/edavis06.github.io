@@ -10,6 +10,8 @@ function runProgram(){
   // Constant Variables
   const FRAME_RATE = 60;
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
+  const BOARD_WIDTH = $("#board").width();
+  const BOARD_HEIGHT = $("#board").height();
   const KEY = {
     "UP": 38,
     "DOWN": 40,
@@ -97,3 +99,17 @@ let score2;
     return gameObject;
   }
   
+  //Reset Ball
+  function startBall () {
+    ball.x = 330;
+    ball.y = 230;
+    speed.x = randomNum = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+    speed.y = randomNum = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+  }
+
+  //Moves any Object based on Speed
+  function moveObject(object){
+    $(object.id).css("left", object.x + object.speedX);
+    
+    $(object.id).css("top", object.y + object.speedY);
+  }
