@@ -31,6 +31,7 @@ let score2;
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keyup', handleRelease);                         // change 'eventType' to the type of event you want to handle
   $(document).on('keydown', handlePress);  
+  startBall();
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -41,7 +42,7 @@ let score2;
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    
+    moveObject(ball);
 
   }
   
@@ -103,8 +104,10 @@ let score2;
   function startBall () {
     ball.x = 330;
     ball.y = 230;
-    speed.x = randomNum = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
-    speed.y = randomNum = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+    ball.speedX = randomNum = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+    ball.speedY = randomNum = (Math.random() * 3 + 2) * (Math.random() > 0.5 ? -1 : 1);
+    console.log(ball.speedX);
+    console.log(ball.speedY);
   }
 
   //Moves any Object based on Speed
@@ -112,6 +115,5 @@ let score2;
     object.x = object.x + object.speedX;
     object.y = object.y + object.speedY;
     $(object.id).css("left", object.x);
-    
     $(object.id).css("top", object.y);
   }
