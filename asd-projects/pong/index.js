@@ -109,7 +109,9 @@ let score2;
 
   //Moves any Object based on Speed
   function moveObject(object){
-    $(object.id).css("left", object.x + object.speedX);
+    object.x = object.x + object.speedX;
+    object.y = object.y + object.speedY;
+    $(object.id).css("left", object.x);
     
-    $(object.id).css("top", object.y + object.speedY);
+    $(object.id).css("top", object.y);
   }
