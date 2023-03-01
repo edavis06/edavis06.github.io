@@ -3,6 +3,14 @@ body {
   background-color: darkgreen;
 }
 
+#startScreen {
+  width: 680px;
+  height: 480px;
+  border: 1px solid white;
+  background-color: black;
+  position: relative;
+}
+
 #board {
   width: 680px;
   height: 480px;
