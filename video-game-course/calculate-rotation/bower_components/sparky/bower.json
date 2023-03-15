@@ -1,0 +1,20 @@
+{
+  "name": "sparky",
+  "homepage": "https://github.com/edavis06/sparky",
+  "authors": [
+    "edavis06 <ed210774@gmail.com>"
+  ],
+  "description": "Operation Spark, Public game library",
+  "main": "index.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
