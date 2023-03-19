@@ -2,30 +2,30 @@
     window.sparky = window.sparky || {
         numz: {
             /**
-             * 
+             * Turns degrees into radians
              * @param {number} degrees 
-             * @returns the degrees in radians
+             * @returns {number} the degrees in radians
              */
             degreesToRadians(degrees) {
                 return degrees * Math.PI / 180;
             },
             /**
-             * 
-             * @param {number} degrees 
-             * @returns the degrees in radians
+             * Turns radians into degrees
+             * @param {number} radians 
+             * @returns {number} the degrees in radians
              */
             radiansToDegrees(radians){
                 return radians * 180 / Math.PI;
             },
             /**
-             * 
-             * @param {object} pointA 
-             * @param {number} pointA.x 
-             * @param {number} pointA.y 
+             * Calculates the angle between two points
+             * @param {object} pointA
+             * @param {number} pointA.x - x value of pointA
+             * @param {number} pointA.y - y value of pointA
              * @param {object} pointB
-             * @param {number} pointB.x 
-             * @param {number} pointB.y  
-             * @returns The angle between the two points in degrees
+             * @param {number} pointB.x - x value of pointB
+             * @param {number} pointB.y - y value of pointB
+             * @returns {number} Angle between the two points in degrees. Value range: -180 to 180
              */
             getAngleDegrees(pointA, pointB){
                 const
@@ -39,14 +39,14 @@
         },
         phyz: {
             /**
-             * 
+             * Calculates the distance between two points
              * @param {object} pointA 
-             * @param {number} pointA.x 
-             * @param {number} pointA.y 
+             * @param {number} pointA.x - x value of pointA
+             * @param {number} pointA.y - y value of pointA
              * @param {object} pointB
-             * @param {number} pointB.x 
-             * @param {number} pointB.y 
-             * @returns the distance between the pointsA and pointsB. It is always positive, and directionless
+             * @param {number} pointB.x - x value of pointB
+             * @param {number} pointB.y - y value of pointB
+             * @returns {number} the distance between the pointsA and pointsB. Always positive
              */
             getDistance(pointA, pointB){
                 const
