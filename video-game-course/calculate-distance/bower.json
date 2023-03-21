@@ -7,7 +7,7 @@
     "jfraboni"
   ],
   "license": "Copywrite Operation Spark",
-  "homepage": "",
+  "homepage": "https://github.com/edavis06/sparky",
   "private": true,
   "ignore": [
     "**/.*",
