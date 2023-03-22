@@ -6,22 +6,35 @@
     assets = opspark.assets,
     engine = opspark.V6().activateResize(),
     canvas = engine.getCanvas(),
-    stage = engine.getStage(),
-    textfield = assets.makeTextfield('Degrees: ');
+    stage = engine.getStage();
   
-  stage.addChild(textfield);
 
-  // try a different hex color if you want //
-  const ship = assets.makeShip('#4286f4');
+  //Choose number of ships on the screen //
+  const shipNumber = 4
+  
+  var ships = [];
+  var textfields = [];
+  
+  //Creates ships, gives them random positions and colors, and adds them to the stage. Also creates textfields and adds them to the stage.
+  for (var i = 0; i < shipNumber; i++){
+    ships.push(assets.makeShip(getRandomColor()));
+    ships[i].x = Math.random()*canvas.width;
+    ships[i].y = Math.random() * canvas.height;
+    stage.addChild(ships[i]);
+
+    textfields.push(assets.makeTextfield('Degrees: '));
+    stage.addChild(textfields[i]);
+  }
+
   
   
   // TODO 5: Center the ship on the stage //
-  ship.x = canvas.width/2;
-  ship.y = canvas.height/2;
+  //ship.x = canvas.width/2;
+ // ship.y = canvas.height/2;
 
 
   // TODO 6: Add the ship to the stage //
-  stage.addChild(ship);
+  //stage.addChild(ship);
 
   
   function update(event) {
@@ -40,11 +53,19 @@
     x: stage.mouseX,
     y: stage.mouseY,
     };
-    const degrees = sparky.numz.getAngleDegrees(ship, mouse);
+    
+    //Gets Degrees for each ship, rotates them, and updates each textfield
+    for (var i = 0; i < ships.length; i++){
+      const degrees = sparky.numz.getAngleDegrees(ships[i], mouse);
+      ships[i].rotation = degrees;
+      assets.updateText(textfields[i], `Degrees: ${degrees.toFixed(1)}°`, canvas);
+
+    }
+
 
     
     // TODO 8: Set the ship's rotation property to the degrees //
-    ship.rotation = degrees;
+    
     
     
     /*
@@ -52,7 +73,16 @@
      * with the current angle degrees. Degrees will be a value 
      * between π and -π, or, 180 and -180.
      */
-    assets.updateText(textfield, `Degrees: ${degrees.toFixed(3)}°`, canvas);
+    //assets.updateText(textfield, `Degrees: ${ships[i-1].rotation.toFixed(3)}°`, canvas);
+  }
+  
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
   }
 
   engine
