@@ -1,0 +1,13 @@
+{
+  "name": "sparky",
+  "_cacheHeaders": {
+    "ETag": "W/\"cf0fa865aa146d760e3f32248e8f3650\"",
+    "Content-Type": "text/html; charset=utf-8"
+  },
+  "_release": "e-tag:W/\"cf0fa86",
+  "main": "index",
+  "_source": "https://github.com/edavis06/sparky",
+  "_target": "*",
+  "_originalSource": "https://github.com/edavis06/sparky",
+  "_direct": true
+}
