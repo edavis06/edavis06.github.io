@@ -45,6 +45,22 @@
       
       return ship;
     },
+    makeProjectile(color) {
+      const
+        width = 40,
+        height = 10,
+        projectile = draw.rect(width, height, color, null, null, -(width + width / 10), -(height / 2));
+
+      // TODO 6: Merge the ship with your game libs makeBody()
+      Object.assign(projectile, sparky.phyz.makeBody('projectile'));
+      
+      
+      
+      // give the ship a default propulsion //
+      projectile.propulsion = 0;
+      
+      return projectile;
+    },
     centerOnStage,
   };
 // TODO 5.a: Replace *my-game-lib* with the name of your game lib

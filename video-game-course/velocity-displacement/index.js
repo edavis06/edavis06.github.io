@@ -61,7 +61,6 @@
     if (event.key === 'ArrowUp') {
       ship.propulsion = 0.1;
     }
-
     /*
      * Left and right arrows cannot be pressed at the 
      * same time. rotationalVelocity is set to -5 when
@@ -69,8 +68,29 @@
      */
     if (event.key === 'ArrowLeft') {
       ship.rotationalVelocity = -5;
+      console.log("arrowleft");
     } else if (event.key === 'ArrowRight') {
       ship.rotationalVelocity = 5;
+      console.log(ship.rotation);
+    }
+
+    /*
+     *Checks for spacebar, creates a body for the projectile
+     *Can be pressed at the same time with other buttons
+     */
+    if (event.key === ' ') {
+      const projectile = assets.makeProjectile('#4286f4');
+      addObject(projectile);
+      projectile.x = ship.x;
+      projectile.y = ship.y;
+      projectile.rotation = ship.rotation;
+      projectile.propulsion = 1;
+      projectile.update = function() {
+          updateVelocity(this, projectile.propulsion, projectile.propulsion);
+          projectile.propulsion = 0
+      };
+
+
     }
   };
 
@@ -82,7 +102,7 @@
 
     
   };
-  
+
   function reboundCircularAssetInArea(body, area) {
     const
       radius = body.radius,
@@ -114,6 +134,11 @@
       body.y = bottom - radius;
       body.velocityY *= -1 ;
     }
+  }
+  function addObject(object){
+    stage.addChild(object);
+    space.add(object);
+    console.log("add object " + object);
   }
   
   // TODO 3: replace *my-game-lib* with the name of your game lib //
