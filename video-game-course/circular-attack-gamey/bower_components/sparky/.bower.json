@@ -1,0 +1,31 @@
+{
+  "name": "sparky",
+  "homepage": "https://github.com/edavis06/sparky",
+  "authors": [
+    "edavis06 <ed210774@gmail.com>"
+  ],
+  "description": "Operation Spark, Public game library",
+  "main": "index.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "version": "1.2.0",
+  "_release": "1.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.2.0",
+    "commit": "16d7543a18211cd0ec15aad3001900559122918e"
+  },
+  "_source": "https://github.com/edavis06/sparky.git",
+  "_target": "^1.2.0",
+  "_originalSource": "https://github.com/edavis06/sparky.git",
+  "_direct": true
+}

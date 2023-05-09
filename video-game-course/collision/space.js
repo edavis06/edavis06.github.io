@@ -1,4 +1,4 @@
-(function(window, opspark, racket) {
+(function(window, opspark, racket, sparky) {
   /**
    * Creates and returns the space module. Listens for SPAWN 
    * events, adding any bodies in the event
@@ -49,27 +49,37 @@
             const bodyB = active[j];
             
             // TODO 1: Calculate hit test components
-            
+            distanceX = bodyA.x - bodyB.x;
+            distanceY = bodyA.y - bodyB.x;
+            distance = sparky.phyz.getDistance(bodyA, bodyB);
+            minDistance = bodyA.radius + bodyB.radius
+
+
             
               
             // TODO 2: Do collision check: how do we know if bodies are colliding?
-            if(/* replace with collision check */ false) {
-              // console.log('hit!');
+            if(distance < minDistance) {
+              console.log('hit!');
               
               // TODO 3: Calculate springToX and springToY 
-              
+              angle = Math.atan2(distanceY, distanceX);
+              springToX = Math.cos(angle) * minDistance + bodyA.x;
+              springToY = Math.sin(angle) * minDistance + bodyA.y;
               
                 
               // TODO 4: Calculate acceleration to spring-to point, factor in dampeningForce
-              
+              accelerationOnX = (springToX - bodyB.x) * dampeningForce;
+              accelerationOnY = (springToY - bodyB.y) * dampeningForce;
               
               
               // TODO 5: Apply acceleration to bodyB
-              
+              bodyB.velocityX += accelerationOnX;
+              bodyB.velocityY += accelerationOnY;
               
               
               // TODO 6: Apply inverse acceleration to bodyA
-              
+              bodyA.velocityX -= accelerationOnX;
+              bodyA.velocityY -= accelerationOnY;
               
               
             }
@@ -78,4 +88,4 @@
       }
     };
   };
-}(window, window.opspark, window.opspark.racket));
+}(window, window.opspark, window.opspark.racket, window.sparky));

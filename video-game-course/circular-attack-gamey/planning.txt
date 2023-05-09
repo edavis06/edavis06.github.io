@@ -1,0 +1,10 @@
+1. Use mouse to move and shoot
+    *Would have to
+2. Create a way to change keybinds
+3. Ammo System with ammo boxes that could be picked update
+    *hud.js
+        *Add Ammo count to Hud (line 60)
+        *Make a function to update ammo count (line 110)
+    *ship.js
+        *Make a handle collision for the ammo thing
+        *set ammo count for each ship
