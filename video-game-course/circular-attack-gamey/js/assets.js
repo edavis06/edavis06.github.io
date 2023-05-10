@@ -102,6 +102,9 @@
           // set the update behavior for the ship //
           ship.update = updateShip;
 
+          //set the starting amount of ammo
+          ship.ammo = 100
+
           /*
            * Returns the global position of where
            * we want the exhaust to show up. This 

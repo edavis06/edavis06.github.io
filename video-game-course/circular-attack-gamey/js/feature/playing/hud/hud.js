@@ -8,7 +8,7 @@
     function(game, messenger) {
       const canvas = game.canvas;
       
-      const huds = layout({ direction:'VERTICAL', padding: 4 });
+      const huds = layout({ direction:'VERTICAL', padding: 30 });
       game.hud.addChild(huds);
       let active = [];
 
@@ -29,6 +29,8 @@
       }
       
       function onSpawn(event) {
+        console.log(event);
+        
         switch (event.source) {
           case 'ship':
             const hud = makeHud(_.first(_.get(event, 'bodies')));
@@ -39,7 +41,7 @@
           case 'orb':
             active.forEach(hud => event.bodies.forEach(orb => hud.updateOf(orb.radius)));
             break;
-          
+
           default:
             // code
         }
@@ -50,19 +52,23 @@
 
         let
           score = 0,
-          of = 0;
+          of = 0,
+          ammo = 100;
 
         const
           txtScore = draw.textfield('SCORE : 000', "19px Arial", '#666', 'left'),
           integrity = new createjs.Container(),
           background = draw.rect(104, 20, '#CCC'),
-          integrityMeter = draw.rect(100, 16, ship.color || '#3333CC');
+          integrityMeter = draw.rect(100, 16, ship.color || '#3333CC'),
+          ammoContainer = new createjs.Container(),
+          txtAmmo = draw.textfield('Ammo: 100', "19px Arial", '#666', 'left');
 
         draw.rect(102, 18, '#FFF', null, null, 1, 1, background);
 
         // add all view components to their containers in the correct order //
         integrity.addChild(background, integrityMeter);
-        hud.addChild(txtScore, integrity);
+        ammoContainer.addChild(txtAmmo);
+        hud.addChild(txtScore, integrity, ammoContainer);
 
         /**
          * Called when the asset is added to the stage.
@@ -71,6 +77,7 @@
         function render() {
           integrityMeter.x = integrityMeter.y = 2;
           integrity.x = txtScore.getBounds().width + 4;
+          ammoContainer.y = txtScore.getBounds().height + 5;
 
           hud.x = canvas.width - hud.getBounds().width - 2;
         }
@@ -87,6 +94,12 @@
         hud.updateScore = function(value) {
           score += value;
           txtScore.text = 'SCORE : ' + score + ' / ' + of ;
+          // the text width may have changed, so update the position //
+          render();
+        };
+
+        hud.updateAmmo = function(value) {
+          txtAmmo.text = 'Ammo : ' + value;
           // the text width may have changed, so update the position //
           render();
         };
@@ -126,6 +139,13 @@
             hud.setIntegrity(ship.integrity);
           }
         }
+
+        messenger.on('AMMO', onAmmo);
+        function onAmmo(event) {
+         //console.log("PROJECTILE!!!")
+         hud.updateAmmo(ship.ammo);
+        }
+
 
         return hud;
       }

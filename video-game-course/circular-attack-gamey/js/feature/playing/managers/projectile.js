@@ -2,7 +2,8 @@
   const
     createjs = window.createjs,
     draw = opspark.draw,
-    phyz = opspark.racket.physikz;
+    phyz = opspark.racket.physikz,
+    hud = opspark.hud;
 
   // create a namespace for the projectile manager //
   _.set(opspark, 'playa.projectile',
@@ -64,6 +65,11 @@
           //console.log(projectile.velocityY);
 
           var projectilePoint = emitter.getProjectilePoint();
+
+          emitter.ammo -= 1;
+          console.log(emitter.ammo);
+          console.log(window.opspark.playa);
+
           //projectile.activate();
           projectile.x = projectilePoint.x;
           projectile.y = projectilePoint.y;
@@ -76,6 +82,7 @@
             .to({ alpha: 0, scaleX: 0.1, scaleY: 0.1 }, 1000, createjs.Ease.linear)
             .call(onTweenComplete);
 
+          messenger.dispatch({ type: 'AMMO', bodies: [projectile] });
           messenger.dispatch({ type: 'SPAWN', bodies: [projectile] });
         }
       };
