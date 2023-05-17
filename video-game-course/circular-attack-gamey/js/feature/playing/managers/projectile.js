@@ -47,43 +47,47 @@
       }
 
       // return the projectile manager api //
+
       return {
+        
         fire: function(emitter) {
-          var projectile, degrees;
-          console.log("hi");
-          projectile = pool.get();
-          projectile.rotation = emitter.rotation;
-          
-          //console.log(projectile.rotation);
-          
-          degrees = emitter.rotation;
-          projectile.velocityX = Math.cos(phyz.degreesToRadians(degrees)) * (projectile.velocityMax + emitter.velocityX);
-          projectile.velocityY = Math.sin(phyz.degreesToRadians(degrees)) * (projectile.velocityMax + emitter.velocityY);
-          projectile.rotationalVelocity = 0;
-          
-          //console.log(projectile.velocityX);
-          //console.log(projectile.velocityY);
+          if (emitter.ammo >0) {
+            var projectile, degrees;
+            console.log("hi");
+            projectile = pool.get();
+            projectile.rotation = emitter.rotation;
+            
+            //console.log(projectile.rotation);
+            
+            degrees = emitter.rotation;
+            projectile.velocityX = Math.cos(phyz.degreesToRadians(degrees)) * (projectile.velocityMax + emitter.velocityX);
+            projectile.velocityY = Math.sin(phyz.degreesToRadians(degrees)) * (projectile.velocityMax + emitter.velocityY);
+            projectile.rotationalVelocity = 0;
+            
+            //console.log(projectile.velocityX);
+            //console.log(projectile.velocityY);
 
-          var projectilePoint = emitter.getProjectilePoint();
+            var projectilePoint = emitter.getProjectilePoint();
 
-          emitter.ammo -= 1;
-          console.log(emitter.ammo);
-          console.log(window.opspark.playa);
+            emitter.ammo -= 1;
+            console.log(emitter.ammo);
+            console.log(window.opspark.playa);
 
-          //projectile.activate();
-          projectile.x = projectilePoint.x;
-          projectile.y = projectilePoint.y;
-          
-          // keep a reference on the projectile to who shot the projectile //
-          projectile.emitter = emitter;
+            //projectile.activate();
+            projectile.x = projectilePoint.x;
+            projectile.y = projectilePoint.y;
+            
+            // keep a reference on the projectile to who shot the projectile //
+            projectile.emitter = emitter;
 
-          createjs.Tween.get(projectile, { override: true })
-            .wait(500)
-            .to({ alpha: 0, scaleX: 0.1, scaleY: 0.1 }, 1000, createjs.Ease.linear)
-            .call(onTweenComplete);
+            createjs.Tween.get(projectile, { override: true })
+              .wait(500)
+              .to({ alpha: 0, scaleX: 0.1, scaleY: 0.1 }, 1000, createjs.Ease.linear)
+              .call(onTweenComplete);
 
-          messenger.dispatch({ type: 'AMMO', bodies: [projectile] });
-          messenger.dispatch({ type: 'SPAWN', bodies: [projectile] });
+            messenger.dispatch({ type: 'AMMO', bodies: [projectile] });
+            messenger.dispatch({ type: 'SPAWN', bodies: [projectile] });
+          };
         }
       };
     });
