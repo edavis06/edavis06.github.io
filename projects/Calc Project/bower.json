@@ -1,0 +1,24 @@
+{
+  "name": "Calc Project",
+  "version": "0.0.1",
+  "description": "Calc Project",
+  "main": "index.html",
+  "authors": [
+    "EDavis"
+  ],
+  "license": "Copywrite Operation Spark",
+  "homepage": "https://github.com/edavis06/sparky",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "EaselJS": "^1.0.2",
+    "V6": "^0.0.2",
+    "Sparky": "https://github.com/edavis06/sparky.git"
+  }
+}

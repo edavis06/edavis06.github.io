@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+hr {
+    width: 500px;
+}
+#title{
+    font-size: 2.25rem;
+    font-weight: bold;
+    letter-spacing: .125rem;
+}
+#board {
+    width: 350px;
+    height: 420px;
+    margin: 0px auto;
+    margin-top: 3px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.guess-tile{
+     /* Box */
+     border: 2px solid lightgray;
+     width: 60px;
+     height: 60px;
+     margin: .125rem;
+ 
+     /* Text*/
+     color: black;
+     font-size: 2.5rem;
+     font-weight: bold;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.correct{
+    background-color: #66BB66;
+    color: white;
+    border-color: white;
+}
+.present{
+    background-color: #CCBB66;
+    color: white;
+    border-color: white;
+}
+.missing{
+    background-color: #999999;
+    color: white;
+    border-color: white;
+}
+
+.keyboard-row{
+    width: auto;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.keyboard-tile{ 
+    /* Box */
+    background-color:#DDDDDD;
+    width: 2.25rem;
+    height: 2.75rem;
+    margin: 2.5px;
+    border-radius: 10%;
+
+    /* Text*/
+    font-size: 1.25rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.enter-key-tile{
+        /* Box */
+        background-color:#DDDDDD;
+        width: 3.75rem;
+        height: 2.75rem;
+        margin: .125rem;
+        border-radius: 10%;
+    
+        /* Text*/
+        font-size: .75rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+#hello{
+    background-color: black;
+    margin: auto;
+    padding: 1rem;
+    min-width: 3rem;
+    width: fit-content;
+    border-radius: 5%;
+
+    color: white;
+    font-size: 1.25rem;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+}
